@@ -23,7 +23,7 @@ export const projects = [
   {
     title: 'Pinoy Flix',
     description: 'PinoyFlix is a fast, ad-free streaming platform designed for seamless, on-demand viewing of diverse entertainment content.',
-    stack: ['React Native', 'Java', 'Firebase'],
+    stack: ['React Native', 'Jikan & TMDB APIs', 'Firebase'],
     github: 'https://github.com/adriancomia/pinoyFlix',
     demo: 'https://pinoyflix.vercel.app/',
     icon: 'TV',
@@ -31,7 +31,7 @@ export const projects = [
   {
     title: 'Gym Buddy',
     description: 'GymBuddy is a fitness tracking app that helps users set goals, monitor progress, and personalized workout plans.',
-    stack: ['React Native', 'JavaScript', 'Firebase'],
+    stack: ['React Native', 'Python', 'Firebase','Flask'],
     github: 'https://github.com/adriancomia/gymBuddy',
     demo: 'https://gymbuddyph.vercel.app/',
     icon: 'mobile',

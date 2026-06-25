@@ -8,12 +8,14 @@ import ProjectsApp from './components/apps/ProjectsApp.jsx'
 import CVApp from './components/apps/CVApp.jsx'
 import ContactApp from './components/apps/ContactApp.jsx'
 import AboutApp from './components/apps/AboutApp.jsx'
+import TrashApp from './components/apps/TrashApp.jsx'
 
 const APPS = {
   projects: { title: 'My Projects', Component: ProjectsApp, pos: { x: 90, y: 64 }, size: { width: 640, height: 460 } },
   cv: { title: 'My CV', Component: CVApp, pos: { x: 260, y: 50 }, size: { width: 480, height: 540 } },
   contact: { title: 'Contact Me', Component: ContactApp, pos: { x: 560, y: 96 }, size: { width: 480, height: 460 } },
   about: { title: 'About This Portfolio', Component: AboutApp, pos: { x: 400, y: 130 }, size: { width: 380, height: 420 } },
+  trash: { title: 'Trash', Component: TrashApp, pos: { x: 320, y: 80 }, size: { width: 520, height: 380 } },
 }
 
 function useIsMobile() {
@@ -84,17 +86,14 @@ export default function App() {
     window.location.reload()
   }
 
-  if (!booted) return <BootScreen onDone={() => setBooted(true)} />
-
-  if (shuttingDown) {
-    return <div className="shutdown-screen"><p>Shutting down…</p></div>
-  }
-
-  const activeAppName = activeId ? APPS[activeId].title : 'Adrian\'s Portfolio'
+  const activeAppName = activeId ? APPS[activeId].title : 'Desktop'
   const runningIds = windows.map((w) => w.id)
 
   return (
     <div className="mac-root">
+      {!booted && <BootScreen onDone={() => setBooted(true)} />}
+      {shuttingDown && <div className="shutdown-screen"><p>Shutting down…</p></div>}
+
       <MenuBar
         activeAppName={activeAppName}
         onAbout={() => handleLaunch('about')}

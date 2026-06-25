@@ -1,23 +1,17 @@
-// ──────────────────────────────────────────────────────────────
-// EDIT ME: this is your basic profile info. Shown in the CV app,
-// boot screen, and browser tab title.
-// ──────────────────────────────────────────────────────────────
 
 export const profile = {
   name: 'Adrian Comia',
-  tagline: 'BSIT Student | Aspiring Cloud Engineer',
-  photo: '/icons/pfp.png', // put a path like '/avatar.jpg' (in /public) here once you have one
+  tagline: 'BSIT Student ',
+  photo: '/icons/pfp.png', 
   role: 'Cloud Engineering Enthusiast',
-  location: 'Philippines',
+  location: 'Davao City,Philippines',
 }
 
 export const contact = {
   email: 'adrian.comia0516@gmail.com',
   github: 'https://github.com/adriancomia',
-  linkedin: 'https://linkedin.com/in/your-handle', // EDIT ME: replace with your real LinkedIn URL
 }
 
-// SkillIcons-ready format
 export const skills = [
   { name: 'Python', icon: 'python' },
   { name: 'Java', icon: 'java' },
@@ -33,9 +27,6 @@ export const skills = [
   { name: 'Express', icon: 'express' },
   { name: 'VS Code', icon: 'vscode' },
 ];
-// ──────────────────────────────────────────────────────────────
-// EDIT ME: education history, oldest or newest first, your call.
-// ──────────────────────────────────────────────────────────────
 export const education = [
   {
     degree: 'BS Information Technology',
@@ -48,11 +39,5 @@ export const education = [
     period: '2022 — 2024',
   },
 ]
-
-// ──────────────────────────────────────────────────────────────
-// EDIT ME: experience — OJT, freelance gigs, org roles, hackathons.
-// If you don't have formal work experience yet, school projects,
-// org positions (e.g. "PIO, IT Society"), or hackathons count.
-// ──────────────────────────────────────────────────────────────
 
 export const stickyNote = '📌 Open to internship opportunities!'

@@ -2,7 +2,7 @@
    Reset & base
    ─────────────────────────────────────────────────────────── */
 * { box-sizing: border-box; }
-html, body, #root { height: 100%; margin: 0; }
+html, body, #root { height: 100%; margin: 0; background: #fff; }
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -295,6 +295,26 @@ a { color: inherit; }
 .project-link { display: flex; align-items: center; gap: 4px; color: #2e7cf6; font-size: 11px; text-decoration: none; }
 .project-link:hover { text-decoration: underline; }
 .explorer-statusbar { padding: 5px 12px; font-size: 11px; color: #777; border-top: 1px solid #e2e2e6; background: #f6f6f8; flex-shrink: 0; }
+.explorer-sidebar ul li span:first-child { width: 16px; text-align: center; flex-shrink: 0; }
+
+.trash-main { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: #fff; }
+.trash-table-header {
+  display: flex; gap: 18px; padding: 6px 14px; font-size: 10.5px; color: #999;
+  text-transform: uppercase; letter-spacing: .04em; border-bottom: 1px solid #eee;
+  position: sticky; top: 0; background: #fff; flex-shrink: 0;
+}
+.trash-table-body { flex: 1; overflow: auto; }
+.trash-row { display: flex; align-items: center; gap: 18px; padding: 9px 14px; border-bottom: 1px solid #f3f3f5; }
+.trash-row:hover { background: #f5f7fb; }
+.col-name { flex: 1.3; min-width: 0; }
+.col-comments { flex: 1.6; min-width: 0; }
+.col-date { flex: 0.8; text-align: right; flex-shrink: 0; }
+.trash-row-name {
+  display: flex; align-items: center; gap: 8px; font-weight: 500; font-size: 12px; color: #1d1d1f;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.trash-row-comment { font-size: 11.5px; color: #888; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.trash-row-date { font-size: 11px; color: #aaa; }
 .explorer-sidebar ul li { display: flex; align-items: center; gap: 8px; padding: 5px 8px; border-radius: 6px; cursor: pointer; }
 .explorer-sidebar ul li.is-selected { background: #2e7cf6; color: #fff; }
 .explorer-sidebar ul li span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -344,7 +364,7 @@ a { color: inherit; }
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 6px 16px rgba(0,0,0,.15); margin-bottom: 10px;
 }
-.cv-mac-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.cv-mac-avatar img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.2); }
 .cv-mac-header h2 { margin: 0; font-size: 17px; color: #1d1d1f; }
 .cv-mac-tagline { margin: 3px 0 0; font-size: 12.5px; color: #555; }
 .cv-mac-location { margin: 2px 0 0; font-size: 11px; color: #999; }
@@ -391,25 +411,37 @@ a { color: inherit; }
    Boot / shutdown screens
    ─────────────────────────────────────────────────────────── */
 .boot-screen {
-  position: fixed; inset: 0; background: #0b0b0d;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px;
+  position: fixed; inset: 0; background: #000; z-index: 9999;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px;
   color: #fff; transition: opacity .5s ease; opacity: 1;
 }
 .boot-screen.is-fading { opacity: 0; }
-.boot-logo { animation: bootPulse 1.8s ease-in-out infinite; }
-.boot-text { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2px; }
-.boot-name { font-size: 20px; font-weight: 600; }
-.boot-title { font-size: 12px; opacity: .6; letter-spacing: .08em; text-transform: uppercase; }
-.boot-progress { width: 200px; height: 4px; border-radius: 2px; overflow: hidden; background: rgba(255,255,255,.15); }
-.boot-progress-bar { width: 40%; height: 100%; background: #fff; border-radius: 2px; animation: bootSlide 1.1s ease-in-out infinite; }
-.boot-footer { font-size: 12px; opacity: .5; }
-@keyframes bootSlide { 0% { transform: translateX(-130%); } 100% { transform: translateX(380%); } }
-@keyframes bootPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+.boot-logo { opacity: 0.95; }
+.boot-photo {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+}
+
+.boot-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,.85);
+  margin-top: -10px;
+}
+
+.boot-progress { width: 160px; height: 5px; border-radius: 3px; overflow: hidden; background: rgba(255,255,255,.18); }
+.boot-progress-bar {
+  width: 0%; height: 100%; background: #d6d6d6; border-radius: 3px;
+  animation: bootFill 2s ease-out forwards;
+}
+@keyframes bootFill { from { width: 0%; } to { width: 100%; } }
 
 .shutdown-screen {
-  position: fixed; inset: 0; background: #000; color: rgba(255,255,255,.6);
+  position: fixed; inset: 0; background: #000; color: rgba(255,255,255,.6); z-index: 9999;
   display: flex; align-items: center; justify-content: center; font-size: 18px;
 }
+
 
 /* ───────────────────────────────────────────────────────────
    Mobile

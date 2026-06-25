@@ -27,7 +27,6 @@ export default function Dock({ runningIds, activeId, onLaunch, onMeasure }) {
   const itemRefs = useRef({})
   const [scales, setScales] = useState({})
   const [hoveredId, setHoveredId] = useState(null)
-  const [trashOpen, setTrashOpen] = useState(false)
   const [bouncingId, setBouncingId] = useState(null)
   const rafRef = useRef(null)
 
@@ -77,14 +76,8 @@ export default function Dock({ runningIds, activeId, onLaunch, onMeasure }) {
       window.open(app.href, '_blank', 'noopener,noreferrer')
       return
     }
-    if (app.kind === 'trash') {
-      setTrashOpen(true)
-      setTimeout(() => setTrashOpen(false), 1400)
-      return
-    }
     onLaunch(app.id)
   }
-
   function renderItem(app, label, extraIconProps = {}) {
     const Icon = APP_ICONS[app.id] || CodeDockIcon
     const scale = scales[app.id] || 1
@@ -131,9 +124,8 @@ export default function Dock({ runningIds, activeId, onLaunch, onMeasure }) {
 
         <div className="dock-divider" />
 
-        {renderItem({ id: 'trash', kind: 'trash' }, 'Trash', { full: trashOpen })}
+        {renderItem({ id: 'trash', label: 'Trash', kind: 'window' }, 'Trash', { full: runningIds.includes('trash') })}
       </div>
-      {trashOpen && <div className="dock-toast">It's empty — for now 👀</div>}
     </div>
   )
 }
