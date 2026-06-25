@@ -19,27 +19,20 @@ export const contact = {
 
 // SkillIcons-ready format
 export const skills = [
-  { name: 'JavaScript', icon: 'js' },
-  { name: 'HTML', icon: 'html' },
-  { name: 'CSS', icon: 'css' },
   { name: 'Python', icon: 'python' },
   { name: 'Java', icon: 'java' },
-
-  { name: 'React', icon: 'react' },
-  { name: 'React Native', icon: 'react' },
-
-  { name: 'Node.js', icon: 'nodejs' },
-  { name: 'Express', icon: 'express' },
-
-  { name: 'MySQL', icon: 'mysql' },
-  { name: 'Firebase', icon: 'firebase' },
-
+  { name: 'JavaScript', icon: 'js' },
+  { name: 'Linux', icon: 'linux' },
   { name: 'Git', icon: 'git' },
   { name: 'GitHub', icon: 'github' },
-
+  { name: 'AWS', icon: 'aws' },
+  { name: 'Docker', icon: 'docker' },
+  { name: 'Firebase', icon: 'firebase' },
+  { name: 'MySQL', icon: 'mysql' },
+  { name: 'Node.js', icon: 'nodejs' },
+  { name: 'Express', icon: 'express' },
   { name: 'VS Code', icon: 'vscode' },
-  { name: 'Kotlin', icon: 'kotlin' },
-]
+];
 // ──────────────────────────────────────────────────────────────
 // EDIT ME: education history, oldest or newest first, your call.
 // ──────────────────────────────────────────────────────────────
@@ -61,13 +54,5 @@ export const education = [
 // If you don't have formal work experience yet, school projects,
 // org positions (e.g. "PIO, IT Society"), or hackathons count.
 // ──────────────────────────────────────────────────────────────
-export const experience = [
-  {
-    title: '',
-    place: '',
-    period: '',
-    description: '',
-  },
-]
 
 export const stickyNote = '📌 Open to internship opportunities!'

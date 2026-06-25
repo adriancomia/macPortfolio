@@ -295,34 +295,79 @@ a { color: inherit; }
 .project-link { display: flex; align-items: center; gap: 4px; color: #2e7cf6; font-size: 11px; text-decoration: none; }
 .project-link:hover { text-decoration: underline; }
 .explorer-statusbar { padding: 5px 12px; font-size: 11px; color: #777; border-top: 1px solid #e2e2e6; background: #f6f6f8; flex-shrink: 0; }
+.explorer-sidebar ul li { display: flex; align-items: center; gap: 8px; padding: 5px 8px; border-radius: 6px; cursor: pointer; }
+.explorer-sidebar ul li.is-selected { background: #2e7cf6; color: #fff; }
+.explorer-sidebar ul li span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
+.explorer-list { flex: 1; overflow: auto; background: #fff; border-right: 1px solid #e4e4e8; min-width: 240px; }
+.list-header {
+  display: flex; justify-content: space-between; padding: 7px 14px;
+  font-size: 10.5px; color: #999; text-transform: uppercase; letter-spacing: .04em;
+  border-bottom: 1px solid #eee; position: sticky; top: 0; background: #fff;
+}
+.list-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 9px 14px; border-bottom: 1px solid #f0f0f2; cursor: pointer; gap: 10px;
+}
+.list-row:hover { background: #f5f7fb; }
+.list-row.is-selected { background: #2e7cf6; }
+.list-row.is-selected .list-row-name { color: #fff; }
+.list-row.is-selected .stack-pill-sm { background: rgba(255,255,255,.25); color: #fff; border-color: transparent; }
+.list-row-name {
+  display: flex; align-items: center; gap: 10px; font-size: 12.5px; font-weight: 500;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #1d1d1f;
+}
+.list-row-tags { display: flex; gap: 4px; flex-shrink: 0; }
+.stack-pill-sm { background: #eef2fb; color: #3a5ba0; border: 1px solid #dbe6fb; border-radius: 8px; padding: 1px 7px; font-size: 9.5px; white-space: nowrap; }
+.stack-pill-sm.more { background: #f0f0f0; color: #777; }
+
+.explorer-preview {
+  width: 230px; flex-shrink: 0; background: #fafafc;
+  padding: 22px 16px; display: flex; flex-direction: column; align-items: center;
+  text-align: center; overflow: auto;
+}
+.preview-icon { margin-bottom: 12px; filter: drop-shadow(0 6px 14px rgba(0,0,0,.18)); }
+.explorer-preview h3 { margin: 0 0 8px; font-size: 14px; color: #1d1d1f; }
+.explorer-preview p { font-size: 11.5px; color: #444; line-height: 1.5; margin: 0 0 12px; }
+.preview-empty { color: #999; font-size: 12px; margin-top: 40px; }
+.explorer-preview .project-stack { justify-content: center; margin-bottom: 12px; }
+.explorer-preview .project-links { flex-direction: column; gap: 8px; width: 100%; }
+.explorer-preview .project-link { justify-content: center; background: #eef2fb; padding: 7px 10px; border-radius: 8px; }
 /* ───────────────────────────────────────────────────────────
    CV app
    ─────────────────────────────────────────────────────────── */
-.cv { padding: 20px 24px; font-size: 12.5px; color: #222; overflow: auto; height: 100%; }
-.cv-header { display: flex; gap: 16px; align-items: center; margin-bottom: 20px; }
-.cv-photo {
-  width: 64px; height: 64px; border-radius: 14px; flex-shrink: 0;
-  background: #e8f0fe; border: 1px solid #cfe0fb;
+.cv-mac { padding: 26px 20px; height: 100%; overflow: auto; background: #f4f4f7; }
+.cv-mac-header { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 26px; }
+.cv-mac-avatar {
+  width: 84px; height: 84px; border-radius: 50%; overflow: hidden;
+  background: #dde6f7; color: #2e7cf6; font-size: 30px; font-weight: 700;
   display: flex; align-items: center; justify-content: center;
-  font-size: 24px; color: #2e7cf6; overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0,0,0,.15); margin-bottom: 10px;
 }
-.cv-photo img { width: 100%; height: 100%; object-fit: cover; }
-.cv-header-text h2 { margin: 0; font-size: 18px; color: #1d1d1f; }
-.cv-role { margin: 2px 0 6px; color: #666; }
-.cv-github { display: inline-flex; gap: 5px; align-items: center; color: #2e7cf6; font-size: 11.5px; text-decoration: none; }
-.cv-github:hover { text-decoration: underline; }
-.cv-section { margin-bottom: 18px; }
-.cv-section h3 {
-  font-size: 12.5px; color: #2e7cf6; border-bottom: 1px solid #e4e4e8;
-  padding-bottom: 4px; margin-bottom: 9px; text-transform: uppercase; letter-spacing: .04em;
+.cv-mac-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.cv-mac-header h2 { margin: 0; font-size: 17px; color: #1d1d1f; }
+.cv-mac-tagline { margin: 3px 0 0; font-size: 12.5px; color: #555; }
+.cv-mac-location { margin: 2px 0 0; font-size: 11px; color: #999; }
+.cv-mac-social { display: flex; gap: 14px; margin-top: 10px; }
+.cv-mac-social a {
+  width: 30px; height: 30px; border-radius: 50%; background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  color: #444; box-shadow: 0 2px 6px rgba(0,0,0,.12); text-decoration: none;
 }
-.cv-entry { margin-bottom: 9px; display: flex; flex-direction: column; }
-.cv-entry strong { font-size: 12.5px; color: #1d1d1f; }
-.cv-entry span { font-size: 11px; color: #777; }
-.cv-entry p { margin: 4px 0 0; font-size: 11.5px; color: #3a3a3c; }
-.cv-skills { display: flex; flex-wrap: wrap; gap: 6px; }
+.cv-mac-social a:hover { background: #2e7cf6; color: #fff; }
 
+.cv-mac-group { margin-bottom: 18px; }
+.cv-mac-group-title { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: .05em; margin: 0 4px 6px; }
+.cv-mac-card { background: #fff; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.08); overflow: hidden; }
+.cv-mac-row { display: flex; align-items: center; gap: 12px; padding: 11px 14px; border-bottom: 1px solid #f0f0f2; }
+.cv-mac-row:last-child { border-bottom: none; }
+.cv-mac-row-icon { width: 26px; flex-shrink: 0; display: flex; justify-content: center; }
+.cv-mac-row-text { display: flex; flex-direction: column; }
+.cv-mac-row-title { font-size: 12.5px; font-weight: 600; color: #1d1d1f; }
+.cv-mac-row-sub { font-size: 11px; color: #888; margin-top: 1px; }
+.cv-mac-skills { padding: 16px 14px; text-align: center; }
+.cv-mac-skills-img { max-width: 100%; }
+.cv-mac-skills-caption { margin: 10px 0 0; font-size: 10.5px; color: #999; line-height: 1.5; }
 /* ───────────────────────────────────────────────────────────
    Mail compose (Contact app)
    ─────────────────────────────────────────────────────────── */

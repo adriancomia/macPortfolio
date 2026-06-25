@@ -139,6 +139,25 @@ export function MobileIcon({ size = 28 }) {
   )
 }
 
+export function TVIcon({ size = 28 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 32 32">
+      <rect x="3" y="6" width="26" height="17" rx="2" fill="#2b2f38" />
+      <rect x="6" y="9" width="20" height="11" fill="#5bb6ff" />
+      <path d="M12 27h8M16 23v4" stroke="#2b2f38" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+export function LinkedInIcon({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="currentColor">
+      <path d="M14.82 0H1.18C.53 0 0 .53 0 1.18v13.64C0 15.47.53 16 1.18 16h13.64c.65 0 1.18-.53 1.18-1.18V1.18C16 .53 15.47 0 14.82 0zM4.74 13.5H2.4V6h2.34v7.5zM3.57 4.93a1.36 1.36 0 110-2.72 1.36 1.36 0 010 2.72zM13.6 13.5h-2.34V9.85c0-.87-.02-2-1.21-2-1.21 0-1.4.95-1.4 1.93v3.72H6.32V6h2.25v1.02h.03c.31-.59 1.08-1.21 2.22-1.21 2.38 0 2.78 1.56 2.78 3.6v4.09z"/>
+    </svg>
+  )
+}
+
+
 export function GithubIcon({ size = 18 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 16 16" fill="currentColor">
