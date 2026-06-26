@@ -18,16 +18,29 @@ export default function Window({
   dockTarget,
 }) {
   const [pos, setPos] = useState(initialPos)
+  const [size, setSize] = useState(initialSize)
   const [closing, setClosing] = useState(false)
   const [minimizing, setMinimizing] = useState(false)
-
   const windowRef = useRef(null)
+  const resizingRef = useRef(false)
+  const resizeStartRef = useRef({ x: 0, y: 0, width: 0, height: 0 })
   const offsetRef = useRef({ x: 0, y: 0 })
   const draggingRef = useRef(false)
 
   useEffect(() => {
     if (!isMinimized) setMinimizing(false)
   }, [isMinimized])
+
+  const handleResizeStart = useCallback((e) => {
+      e.stopPropagation()
+      onFocus(id)
+      if (isMaximized || isMobile) return
+      resizingRef.current = true
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY
+      resizeStartRef.current = { x: clientX, y: clientY, width: size.width, height: size.height }
+      document.body.style.userSelect = 'none'
+    }, [size, isMaximized, isMobile, onFocus, id])
 
   const handlePointerDown = useCallback((e) => {
     onFocus(id)
@@ -41,6 +54,15 @@ export default function Window({
 
   useEffect(() => {
     function handleMove(e) {
+      if (resizingRef.current) {
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY
+        const start = resizeStartRef.current
+        const newWidth = Math.max(320, start.width + (clientX - start.x))
+        const newHeight = Math.max(220, start.height + (clientY - start.y))
+        setSize({ width: newWidth, height: newHeight })
+        return
+      }
       if (!draggingRef.current) return
       const clientX = e.touches ? e.touches[0].clientX : e.clientX
       const clientY = e.touches ? e.touches[0].clientY : e.clientY
@@ -53,9 +75,9 @@ export default function Window({
     }
     function handleUp() {
       draggingRef.current = false
+      resizingRef.current = false
       document.body.style.userSelect = ''
-    }
-    window.addEventListener('mousemove', handleMove)
+    }    window.addEventListener('mousemove', handleMove)
     window.addEventListener('mouseup', handleUp)
     window.addEventListener('touchmove', handleMove, { passive: false })
     window.addEventListener('touchend', handleUp)
@@ -70,14 +92,14 @@ export default function Window({
   if (isMinimized) return null
 
   const style = isMaximized || isMobile
-    ? { top: 28, left: 0, width: '100%', height: 'calc(100% - 28px)', zIndex }
-    : {
-        top: pos.y,
-        left: pos.x,
-        width: initialSize.width,
-        height: initialSize.height,
-        zIndex,
-      }
+      ? { top: 28, left: 0, width: '100%', height: 'calc(100% - 28px)', zIndex }
+      : {
+          top: pos.y,
+          left: pos.x,
+          width: size.width,
+          height: size.height,
+          zIndex,
+        }
 
   return (
     <div
@@ -119,7 +141,14 @@ export default function Window({
         <span className="mac-titlebar-text">{title}</span>
         <div className="mac-traffic mac-traffic-spacer" aria-hidden="true" />
       </div>
-      <div className="mac-window-body">{children}</div>
+  <div className="mac-window-body">{children}</div>
+        {!isMaximized && !isMobile && (
+        <div
+          className="mac-resize-handle"
+          onMouseDown={handleResizeStart}
+          onTouchStart={handleResizeStart}
+        />
+      )}
     </div>
   )
 }

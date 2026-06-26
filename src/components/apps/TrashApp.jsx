@@ -1,9 +1,12 @@
+import { TrashDockIcon } from '../Icons.jsx'
+
+
 const DELETED_ITEMS = [
   { name: 'regret.txt', date: 'Just now', comment: 'i miss her' },
-  { name: 'old_resume_v1.docx', date: 'Yesterday', comment: 'Replaced by a much better version (this one)' },
-  { name: 'bugs.log', date: '2 days ago', comment: 'There were a lot of these' },
-  { name: '3am_commit.png', date: 'Last week', comment: 'Screenshot of code that should not have worked' },
-  { name: 'untitled_project_47', date: 'Last month', comment: 'It was a great idea at the time' },
+  { name: 'old_resume_v1.docx', date: 'Yesterday', },
+  { name: 'bugs.log', date: '2 days ago', },
+  { name: '3am_commit.png', date: 'Last week', },
+  { name: 'untitled_project_47', date: 'Last month', },
 ]
 
 const SIDEBAR_ITEMS = [
@@ -31,11 +34,11 @@ function FileGlyph() {
 export default function TrashApp() {
   return (
     <div className="explorer">
-      <div className="explorer-toolbar">
+<div className="explorer-toolbar">
+        <TrashDockIcon size={22} />
         <span className="explorer-address-label">Address:</span>
         <span className="explorer-address">My Computer ▸ Trash</span>
       </div>
-
       <div className="explorer-body">
         <div className="explorer-sidebar">
           <div className="sidebar-section-title">Favorites</div>

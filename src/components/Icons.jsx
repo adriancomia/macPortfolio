@@ -157,6 +157,32 @@ export function LinkedInIcon({ size = 18 }) {
   )
 }
 
+export function YoutubeDockIcon({ size = 54 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 64 64">
+      <rect x="2" y="2" width="60" height="60" rx="14" fill="#fff" />
+      <rect x="10" y="20" width="44" height="24" rx="8" fill="#ff0000" />
+      <path d="M28 26l12 6-12 6z" fill="#fff" />
+    </svg>
+  )
+}
+
+export function SearchIcon({ size = 16 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none">
+      <circle cx="7" cy="7" r="5.2" stroke="currentColor" strokeWidth="1.6" />
+      <line x1="11" y1="11" x2="15" y2="15" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+export function BackArrowIcon({ size = 14 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none">
+      <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
 
 export function GithubIcon({ size = 18 }) {
   return (

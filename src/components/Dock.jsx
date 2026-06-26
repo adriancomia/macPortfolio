@@ -1,5 +1,5 @@
 import { useRef, useState, useCallback, useEffect } from 'react'
-import { ProjectsDockIcon, CVDockIcon, ContactDockIcon, CodeDockIcon, LinkedInDockIcon, TrashDockIcon } from './Icons.jsx'
+import { ProjectsDockIcon, CVDockIcon, ContactDockIcon, CodeDockIcon, LinkedInDockIcon, TrashDockIcon, YoutubeDockIcon } from './Icons.jsx'
 import { contact } from '../data/profile.js'
 
 const APP_ICONS = {
@@ -9,6 +9,8 @@ const APP_ICONS = {
   github: CodeDockIcon,
   linkedin: LinkedInDockIcon,
   trash: TrashDockIcon,
+  youtube: YoutubeDockIcon,
+
 }
 
 const DOCK_APPS = [
@@ -17,6 +19,8 @@ const DOCK_APPS = [
   { id: 'contact', label: 'Contact Me', kind: 'window', image: '/icons/contacts.png', size: 52 },
   { id: 'github', label: 'GitHub', kind: 'external', href: contact.github, image: '/icons/github.png', size: 53 },
   { id: 'linkedin', label: 'LinkedIn', kind: 'external', href: contact.linkedin, image: '/icons/linkedin.png', size: 53 },
+  { id: 'youtube', label: 'YouTube', kind: 'window', image: '/icons/ytlogo.png', size: 53 },
+
 ]
 
 const BASE = 54
@@ -124,7 +128,7 @@ export default function Dock({ runningIds, activeId, onLaunch, onMeasure }) {
 
         <div className="dock-divider" />
 
-        {renderItem({ id: 'trash', label: 'Trash', kind: 'window' }, 'Trash', { full: runningIds.includes('trash') })}
+        {renderItem({ id: 'trash', label: 'Trash', kind: 'window',image: '/icons/trash-icon.png', }, 'Trash', { full: runningIds.includes('trash') })}
       </div>
     </div>
   )

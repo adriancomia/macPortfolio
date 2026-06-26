@@ -9,14 +9,18 @@ import CVApp from './components/apps/CVApp.jsx'
 import ContactApp from './components/apps/ContactApp.jsx'
 import AboutApp from './components/apps/AboutApp.jsx'
 import TrashApp from './components/apps/TrashApp.jsx'
+import YoutubeApp from './components/apps/YoutubeApp.jsx'
+
 
 const APPS = {
-  projects: { title: 'My Projects', Component: ProjectsApp, pos: { x: 90, y: 64 }, size: { width: 640, height: 460 } },
+  projects: { title: 'My Projects', Component: ProjectsApp, pos: { x: 90, y: 64 }, size: { width: 740, height: 500 } },
   cv: { title: 'My CV', Component: CVApp, pos: { x: 260, y: 50 }, size: { width: 480, height: 540 } },
   contact: { title: 'Contact Me', Component: ContactApp, pos: { x: 560, y: 96 }, size: { width: 480, height: 460 } },
   about: { title: 'About This Portfolio', Component: AboutApp, pos: { x: 400, y: 130 }, size: { width: 380, height: 420 } },
   trash: { title: 'Trash', Component: TrashApp, pos: { x: 320, y: 80 }, size: { width: 520, height: 380 } },
+  youtube: { title: 'YouTube', Component: YoutubeApp, pos: { x: 120, y: 56 }, size: { width: 820, height: 580 } },
 }
+
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 720)
