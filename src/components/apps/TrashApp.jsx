@@ -10,13 +10,13 @@ const DELETED_ITEMS = [
 ]
 
 const SIDEBAR_ITEMS = [
-  { label: 'AirDrop', icon: '📡' },
-  { label: 'Recents', icon: '🕐' },
-  { label: 'Applications', icon: '🚀' },
-  { label: 'Desktop', icon: '🖥️' },
-  { label: 'Documents', icon: '📄' },
-  { label: 'Downloads', icon: '⬇️' },
-  { label: 'Trash', icon: '🗑️', selected: true },
+  { label: 'AirDrop',},
+  { label: 'Recents',},
+  { label: 'Applications',},
+  { label: 'Desktop',},
+  { label: 'Documents',},
+  { label: 'Downloads',},
+  { label: 'Trash', selected: true },
 ]
 
 function FileGlyph() {
