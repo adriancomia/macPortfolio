@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { getTrackEmbedUrl } from '../../data/spotifyEmbed.js'
 import { SearchIcon } from '../Icons.jsx'
+import { setNowPlayingTrack } from '../../lib/nowPlayingStore.js'
 
 const GENRES = ['Hip-Hop', 'Pop', 'R&B', 'Chill', 'OPM']
 
@@ -87,7 +88,7 @@ export default function SpotifyApp() {
               <button className="spotify-clear-search" onClick={clearSearch}>Clear</button>
             </div>
             {searchResults.map((t) => (
-              <button key={t.id} className="spotify-result-row" onClick={() => setSelectedTrack(t.id)}>
+              <button key={t.id} className="spotify-result-row" onClick={() => { setSelectedTrack(t.id); setNowPlayingTrack(t.id) }}>
                 <img src={t.image} alt="" />
                 <span className="spotify-result-text">
                   <span className="spotify-result-title">{t.name}</span>
@@ -101,7 +102,7 @@ export default function SpotifyApp() {
             <div key={section.label} className="spotify-section">
               <div className="spotify-section-header"><span>{section.label}</span></div>
               {section.tracks.map((t) => (
-                <button key={t.id} className="spotify-result-row" onClick={() => setSelectedTrack(t.id)}>
+                <button key={t.id} className="spotify-result-row" onClick={() => { setSelectedTrack(t.id); setNowPlayingTrack(t.id) }}>
                   <img src={t.image} alt="" />
                   <span className="spotify-result-text">
                     <span className="spotify-result-title">{t.name}</span>
