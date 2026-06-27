@@ -209,3 +209,14 @@ export function BatteryIcon({ size = 18 }) {
     </svg>
   )
 }
+
+export function SpotifyDockIcon({ size = 54 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="30" fill="#1ed760" />
+      <path d="M19 26c8-2.5 18-2 25 2" stroke="#0b3d1c" strokeWidth="3.4" strokeLinecap="round" fill="none" />
+      <path d="M20 33c7-2 15-1.6 21 1.8" stroke="#0b3d1c" strokeWidth="3" strokeLinecap="round" fill="none" />
+      <path d="M21 40c5.5-1.6 11.5-1.3 16 1.2" stroke="#0b3d1c" strokeWidth="2.6" strokeLinecap="round" fill="none" />
+    </svg>
+  )
+}

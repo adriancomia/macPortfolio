@@ -1,5 +1,5 @@
 import { useRef, useState, useCallback, useEffect } from 'react'
-import { ProjectsDockIcon, CVDockIcon, ContactDockIcon, CodeDockIcon, LinkedInDockIcon, TrashDockIcon, YoutubeDockIcon } from './Icons.jsx'
+import { ProjectsDockIcon, CVDockIcon, ContactDockIcon, CodeDockIcon, LinkedInDockIcon, TrashDockIcon, YoutubeDockIcon,SpotifyDockIcon } from './Icons.jsx'
 import { contact } from '../data/profile.js'
 
 const APP_ICONS = {
@@ -10,6 +10,7 @@ const APP_ICONS = {
   linkedin: LinkedInDockIcon,
   trash: TrashDockIcon,
   youtube: YoutubeDockIcon,
+  spotify: SpotifyDockIcon,
 
 }
 
@@ -20,9 +21,10 @@ const DOCK_APPS = [
   { id: 'github', label: 'GitHub', kind: 'external', href: contact.github, image: '/icons/github.png', size: 53 },
   { id: 'linkedin', label: 'LinkedIn', kind: 'external', href: contact.linkedin, image: '/icons/linkedin.png', size: 53 },
   { id: 'youtube', label: 'YouTube', kind: 'window', image: '/icons/ytlogo.png', size: 53 },
+  { id: 'spotify', label: 'Spotify', kind: 'window',image: '/icons/spotifylogo.png', size: 53 },
 
 ]
-
+  
 const BASE = 54
 const MAX_SCALE = 1.7
 const SPREAD = 90 // px radius of influence
