@@ -21,7 +21,7 @@ const APPS = {
   about: { title: 'About This Portfolio', Component: AboutApp, pos: { x: 400, y: 130 }, size: { width: 380, height: 420 } },
   trash: { title: 'Trash', Component: TrashApp, pos: { x: 320, y: 80 }, size: { width: 520, height: 380 } },
   youtube: { title: 'YouTube', Component: YoutubeApp, pos: { x: 120, y: 56 }, size: { width: 820, height: 580 } },
-  spotify: { title: 'Spotify', Component: SpotifyApp, pos: { x: 200, y: 90 }, size: { width: 380, height: 480 } },
+  spotify: { title: 'Spotify', Component: SpotifyApp, pos: { x: 160, y: 60 }, size: { width: 700, height: 520 } },
   }
 
 
