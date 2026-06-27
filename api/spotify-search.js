@@ -1,5 +1,6 @@
 export default async function handler(req, res) {
   const query = req.query.q
+  const limit = req.query.limit || 12
   if (!query) {
     res.status(400).json({ error: 'Missing search query' })
     return
@@ -17,13 +18,20 @@ export default async function handler(req, res) {
       body: 'grant_type=client_credentials',
     })
     const tokenData = await tokenRes.json()
-    if (!tokenData.access_token) throw new Error('Failed to get Spotify token')
+    if (!tokenRes.ok || !tokenData.access_token) {
+      res.status(500).json({ error: 'Spotify auth failed', detail: tokenData })
+      return
+    }
 
     const searchRes = await fetch(
-      `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track&limit=12`,
+      `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track&limit=${limit}`,
       { headers: { Authorization: `Bearer ${tokenData.access_token}` } }
     )
     const searchData = await searchRes.json()
+    if (!searchRes.ok) {
+      res.status(500).json({ error: 'Spotify search failed', detail: searchData })
+      return
+    }
 
     const tracks = (searchData.tracks?.items || []).map((t) => ({
       id: t.id,
