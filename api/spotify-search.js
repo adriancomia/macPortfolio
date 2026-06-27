@@ -1,11 +1,10 @@
 export default async function handler(req, res) {
 const query = req.query.q
-  let limit = parseInt(req.query.limit, 10)
+let limit = parseInt(req.query.limit, 10)
   if (!Number.isFinite(limit) || limit < 1) limit = 12
   if (limit > 50) limit = 50
-  if (!query) {
-    res.status(400).json({ error: 'Missing search query' })
-    return
+  console.log('DEBUG limit value:', limit, 'raw query:', req.query.limit)    
+  return
   }
 
   try {
@@ -46,4 +45,3 @@ const query = req.query.q
   } catch (err) {
     res.status(500).json({ error: err.message })
   }
-}
