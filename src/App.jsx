@@ -11,7 +11,6 @@ import AboutApp from './components/apps/AboutApp.jsx'
 import TrashApp from './components/apps/TrashApp.jsx'
 import YoutubeApp from './components/apps/YoutubeApp.jsx'
 import SpotifyApp from './components/apps/SpotifyApp.jsx'
-import { SpotifyProvider } from './context/SpotifyContext.jsx'
 
 
 
@@ -22,9 +21,8 @@ const APPS = {
   about: { title: 'About This Portfolio', Component: AboutApp, pos: { x: 400, y: 130 }, size: { width: 380, height: 420 } },
   trash: { title: 'Trash', Component: TrashApp, pos: { x: 320, y: 80 }, size: { width: 520, height: 380 } },
   youtube: { title: 'YouTube', Component: YoutubeApp, pos: { x: 120, y: 56 }, size: { width: 820, height: 580 } },
-  spotify: { title: 'Spotify', Component: SpotifyApp, pos: { x: 200, y: 90 }, size: { width: 360, height: 420 } },
-
-}
+  spotify: { title: 'Spotify', Component: SpotifyApp, pos: { x: 200, y: 90 }, size: { width: 380, height: 480 } },
+  }
 
 
 function useIsMobile() {
@@ -99,7 +97,6 @@ export default function App() {
   const runningIds = windows.map((w) => w.id)
 
   return (
-    <SpotifyProvider>
     <div className="mac-root">
       {!booted && <BootScreen onDone={() => setBooted(true)} />}
       {shuttingDown && <div className="shutdown-screen"><p>Shutting down…</p></div>}
@@ -141,6 +138,5 @@ export default function App() {
 
       <Dock runningIds={runningIds} activeId={activeId} onLaunch={handleLaunch} onMeasure={setDockPositions} />
     </div>
-    </SpotifyProvider>
   )
 }

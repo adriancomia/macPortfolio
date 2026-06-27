@@ -24,10 +24,10 @@ const DOCK_APPS = [
   { id: 'spotify', label: 'Spotify', kind: 'window',image: '/icons/spotifylogo.png', size: 53 },
 
 ]
-  
+
 const BASE = 54
 const MAX_SCALE = 1.7
-const SPREAD = 90 // px radius of influence
+const SPREAD = 90 
 export default function Dock({ runningIds, activeId, onLaunch, onMeasure }) {
   const dockRef = useRef(null)
   const itemRefs = useRef({})
