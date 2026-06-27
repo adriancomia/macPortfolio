@@ -17,3 +17,7 @@ export function getWidgetEmbedUrl() {
 export function getAppEmbedUrl() {
   return toEmbedUrl(APP_PLAYLIST_LINK)
 }
+
+export function getTrackEmbedUrl(trackId) {
+  return `https://open.spotify.com/embed/track/${trackId}?utm_source=generator&theme=0`
+}
