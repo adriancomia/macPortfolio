@@ -1,11 +1,12 @@
 export default async function handler(req, res) {
+  const DEBUG_VERSION = 'v4-debug'
   const query = req.query.q
   let limit = parseInt(req.query.limit, 10)
   if (!Number.isFinite(limit) || limit < 1) limit = 12
   if (limit > 50) limit = 50
 
   if (!query) {
-    res.status(400).json({ error: 'Missing search query' })
+    res.status(400).json({ error: 'Missing search query', version: DEBUG_VERSION })
     return
   }
 
@@ -22,17 +23,25 @@ export default async function handler(req, res) {
     })
     const tokenData = await tokenRes.json()
     if (!tokenRes.ok || !tokenData.access_token) {
-      res.status(500).json({ error: 'Spotify auth failed', detail: tokenData })
+      res.status(500).json({ error: 'Spotify auth failed', detail: tokenData, version: DEBUG_VERSION })
       return
     }
 
-    const searchRes = await fetch(
-      `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track&limit=${limit}`,
-      { headers: { Authorization: `Bearer ${tokenData.access_token}` } }
-    )
+    const searchUrl = `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track&limit=${limit}`
+
+    const searchRes = await fetch(searchUrl, {
+      headers: { Authorization: `Bearer ${tokenData.access_token}` },
+    })
     const searchData = await searchRes.json()
     if (!searchRes.ok) {
-      res.status(500).json({ error: 'Spotify search failed', detail: searchData })
+      res.status(500).json({
+        error: 'Spotify search failed',
+        detail: searchData,
+        resolvedLimit: limit,
+        rawLimitParam: req.query.limit,
+        builtUrl: searchUrl,
+        version: DEBUG_VERSION,
+      })
       return
     }
 
@@ -43,8 +52,8 @@ export default async function handler(req, res) {
       image: t.album.images[1]?.url || t.album.images[0]?.url,
     }))
 
-    res.status(200).json({ tracks })
+    res.status(200).json({ tracks, version: DEBUG_VERSION })
   } catch (err) {
-    res.status(500).json({ error: err.message })
+    res.status(500).json({ error: err.message, version: DEBUG_VERSION })
   }
 }
